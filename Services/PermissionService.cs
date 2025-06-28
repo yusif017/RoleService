@@ -21,7 +21,7 @@ namespace RoleMenecment.Services
                 .Include(rp => rp.Role)
                 .Include(rp => rp.Permission)
                 .Where(rp => roleNames.Contains(rp.Role.Name))
-                .Select(rp => rp.Permission.Name) // Burada Permission entity-dən Name götürürük
+                .Select(rp => rp.Permission.Name) 
                 .Distinct()
                 .ToListAsync();
 

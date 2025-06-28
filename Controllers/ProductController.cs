@@ -7,15 +7,15 @@ namespace RoleMenecment.Controllers;
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
 {
-    [Authorize(Policy = "Permission:Product.Create")]
+    [Authorize(Policy = "Permission:Permission.Create")]
     [HttpPost("create")]
     public IActionResult Create() => Ok("Product created");
 
-    [Authorize(Policy = "Permission:Product.Update")]
+    [Authorize(Policy = "Permission:Permission.Update")]
     [HttpPut("update")]
     public IActionResult Update() => Ok("Product updated");
 
-    [Authorize(Policy = "Permission:Product.View")]
+    [Authorize(Policy = "Permission:Permission.View")]
     [HttpGet("view")]
     public IActionResult View() => Ok("Product details");
 }

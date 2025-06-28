@@ -34,9 +34,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
     // Seed Permissions
     modelBuilder.Entity<Permission>().HasData(
-        new Permission { Id = Guid.Parse("a3f01a5b-c6f1-4f9e-8425-97e2e2c02a5e"), Name = "Product.Create" },
-        new Permission { Id = Guid.Parse("e19d62d4-c3a7-4c1b-84aa-fb54505db8b1"), Name = "Product.Update" },
-        new Permission { Id = Guid.Parse("f27e5d1a-7ad6-41b7-8d45-0f65b2d6cd18"), Name = "Product.View" }
+        new Permission { Id = Guid.Parse("a3f01a5b-c6f1-4f9e-8425-97e2e2c02a5e"), Name = "Permission.Create" },
+        new Permission { Id = Guid.Parse("e19d62d4-c3a7-4c1b-84aa-fb54505db8b1"), Name = "Permission.Update" },
+        new Permission { Id = Guid.Parse("f27e5d1a-7ad6-41b7-8d45-0f65b2d6cd18"), Name = "Permission.View" }
     );
 
     // Seed RolePermissions
