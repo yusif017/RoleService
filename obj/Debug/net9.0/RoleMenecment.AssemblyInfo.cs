@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoleMenecment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af9ad57120054c101cbdc0ef14654227591a76a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoleMenecment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoleMenecment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

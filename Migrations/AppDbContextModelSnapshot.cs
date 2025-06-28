@@ -22,6 +22,38 @@ namespace RoleMenecment.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("RoleMenecment.Models.Permission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permission");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a3f01a5b-c6f1-4f9e-8425-97e2e2c02a5e"),
+                            Name = "Product.Create"
+                        },
+                        new
+                        {
+                            Id = new Guid("e19d62d4-c3a7-4c1b-84aa-fb54505db8b1"),
+                            Name = "Product.Update"
+                        },
+                        new
+                        {
+                            Id = new Guid("f27e5d1a-7ad6-41b7-8d45-0f65b2d6cd18"),
+                            Name = "Product.View"
+                        });
+                });
+
             modelBuilder.Entity("RoleMenecment.Models.Role", b =>
                 {
                     b.Property<Guid>("Id")
@@ -51,41 +83,33 @@ namespace RoleMenecment.Migrations
 
             modelBuilder.Entity("RoleMenecment.Models.RolePermission", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PermissionName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.Property<Guid>("PermissionId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasIndex("RoleId");
+                    b.HasKey("RoleId", "PermissionId");
+
+                    b.HasIndex("PermissionId");
 
                     b.ToTable("RolePermissions");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a3f01a5b-c6f1-4f9e-8425-97e2e2c02a5e"),
-                            PermissionName = "Product.Create",
-                            RoleId = new Guid("c56a4180-65aa-42ec-a945-5fd21dec0538")
+                            RoleId = new Guid("c56a4180-65aa-42ec-a945-5fd21dec0538"),
+                            PermissionId = new Guid("a3f01a5b-c6f1-4f9e-8425-97e2e2c02a5e")
                         },
                         new
                         {
-                            Id = new Guid("e19d62d4-c3a7-4c1b-84aa-fb54505db8b1"),
-                            PermissionName = "Product.Update",
-                            RoleId = new Guid("c56a4180-65aa-42ec-a945-5fd21dec0538")
+                            RoleId = new Guid("c56a4180-65aa-42ec-a945-5fd21dec0538"),
+                            PermissionId = new Guid("e19d62d4-c3a7-4c1b-84aa-fb54505db8b1")
                         },
                         new
                         {
-                            Id = new Guid("f27e5d1a-7ad6-41b7-8d45-0f65b2d6cd18"),
-                            PermissionName = "Product.View",
-                            RoleId = new Guid("d14a1f59-8e8a-4f30-8f16-247d7e47d9c3")
+                            RoleId = new Guid("d14a1f59-8e8a-4f30-8f16-247d7e47d9c3"),
+                            PermissionId = new Guid("f27e5d1a-7ad6-41b7-8d45-0f65b2d6cd18")
                         });
                 });
 
@@ -124,52 +148,57 @@ namespace RoleMenecment.Migrations
 
             modelBuilder.Entity("RoleMenecment.Models.UserRole", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            UserId = new Guid("33333333-3333-3333-3333-333333333333"),
                             RoleId = new Guid("c56a4180-65aa-42ec-a945-5fd21dec0538"),
-                            UserId = new Guid("33333333-3333-3333-3333-333333333333")
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
                         },
                         new
                         {
-                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            UserId = new Guid("33333333-3333-3333-3333-333333333333"),
                             RoleId = new Guid("d14a1f59-8e8a-4f30-8f16-247d7e47d9c3"),
-                            UserId = new Guid("33333333-3333-3333-3333-333333333333")
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
                         },
                         new
                         {
-                            Id = new Guid("33333333-3333-3333-3333-333333333333"),
+                            UserId = new Guid("44444444-4444-4444-4444-444444444444"),
                             RoleId = new Guid("d14a1f59-8e8a-4f30-8f16-247d7e47d9c3"),
-                            UserId = new Guid("44444444-4444-4444-4444-444444444444")
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
                         });
                 });
 
             modelBuilder.Entity("RoleMenecment.Models.RolePermission", b =>
                 {
+                    b.HasOne("RoleMenecment.Models.Permission", "Permission")
+                        .WithMany("RolePermissions")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RoleMenecment.Models.Role", "Role")
                         .WithMany("RolePermissions")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Permission");
 
                     b.Navigation("Role");
                 });
@@ -191,6 +220,11 @@ namespace RoleMenecment.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RoleMenecment.Models.Permission", b =>
+                {
+                    b.Navigation("RolePermissions");
                 });
 
             modelBuilder.Entity("RoleMenecment.Models.Role", b =>
