@@ -46,8 +46,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         new RolePermission { RoleId = Guid.Parse("d14a1f59-8e8a-4f30-8f16-247d7e47d9c3"), PermissionId = Guid.Parse("f27e5d1a-7ad6-41b7-8d45-0f65b2d6cd18") }
     );
 
-    // Seed Users
-    modelBuilder.Entity<User>().HasData(
+
+        // Seed Users
+        modelBuilder.Entity<User>().HasData(
         new User
         {
             Id = Guid.Parse("33333333-3333-3333-3333-333333333333"),
